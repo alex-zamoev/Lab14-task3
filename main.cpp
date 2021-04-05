@@ -37,13 +37,16 @@ int positionAtSign(string addr){
 int main(){
     string email;
     int posAtSign = 0;
+    int leftLength, rightLength;
     bool mainFlag = true;
     cout << "Enter email address: " << endl;
     cin >> email;
 
     posAtSign = positionAtSign(email);
+    leftLength = posAtSign;
+    rightLength = email.length() - posAtSign;
 
-    if (email[0] == '.' || email[email.length() - 1] == '.') mainFlag = false;
+    if (email[0] == '.' || email[email.length() - 1] == '.' || leftLength > 64 || rightLength > 63) mainFlag = false;
     else{
         if(posAtSign == 0) mainFlag = false;
         else{
